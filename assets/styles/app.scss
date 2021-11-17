@@ -1,0 +1,89 @@
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+$orange:#fdc213;
+$green:#a4d60d;
+$blue:#4dc7dc;
+
+.bg-form {
+    background-color: $orange;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+
+    .form {
+        background-color:white;
+        margin: auto;
+        height: 400px;
+        border-radius: 10px;
+    }
+
+    img {
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.btn {
+    border-radius: 20px;
+    width: 150px;
+}
+.btn-green { @extend .btn; background-color: $green; }
+.btn-blue { @extend .btn; background-color: $blue; }
+
+.questionnaire {
+    .sujet {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-size: cover;
+        height: 200px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 3px black;
+
+        h1 {
+            font-weight: bold;
+        }
+       .pad {
+            padding-left: 20px;
+        }
+    } 
+
+}
+
+.logo-home {
+    width: 150px;
+}
+
+.possibilite {
+    @extend .btn;
+    border-radius: 20px;
+    box-shadow: 1px 1px 3px black;
+    background-color: white;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+
+    input[type=radio]:checked{
+        background-color: $blue;
+    }
+}
+
+hr {
+    margin-top: 50px;
+}
+
+.pts {
+    color: $green;
+    font-weight: bold;
+}
+
+.success {
+    @extend .possibilite;
+    background-color: $green;
+}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ValidateController!{% endblock %}
+
+{% block body %}
+
+<div class="col-10 offset-1 questionnaire">
+
+  <img src="/../img/logo.png" alt="" class="logo-home mt-4">
+
+    <p class="pts mt-4">Vous avez un total de {{points}}/20 points!</p>
+
+    {% for question in questionnaire.questions.values %}
+        <hr><h3>{{question.name}}</h3>
+
+        <div class="row">
+        {% for reponse in question.reponses.values %}
+                {% if reponse.choix == 1 %}
+                    <div class="success m-2">
+                        <p>{{reponse.name}}</p>
+                    </div>
+                {% else %}
+                    <div class="possibilite m-2">
+                        <p>{{reponse.name}}</p>
+                    </div>
+                {% endif %}
+        {% endfor %}
+        </div>
+    {% endfor %}
+
+
+    {% if points >= 10 %}
+        <p class="pts mt-4">Félicitations vous avez eu plus de la moyenne!</p>
+    {% else %}
+        <p class="pts mt-4">Vous avez encore des efforts à fournir </p>
+    {% endif %}
+
+</div>
+<a href="{{path('questionnaires',{'id':player.id})}}" class="btn btn-blue">Retour au choix du questionnaire</a>
+{% endblock %}

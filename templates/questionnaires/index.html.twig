@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello QuestionnairesController!{% endblock %}
+
+{% block body %}
+<div class="col-10 offset-1">
+  <img src="/../img/logo.png" alt="" class="logo-home mt-4">
+  <div>
+    <h3>Bienvenue {{player.name}} {{player.lastname}}</h3>
+
+      <div class="questionnaire">
+      {% for questionnaire in questionnaires %}
+          <div pathBg="{{questionnaire.img}}"  class="sujet col-8 offset-2  mt-4 p-3">
+            <h2>{{questionnaire.name}}</h2>
+            <p>{{questionnaire.description}}</p>
+            <a href="{{path('questionnaire',{'id':player.id, 'namequestionnaire': questionnaire.name})}}" class="btn btn-green">Jouer</a>
+          </div>
+      {% endfor %}
+      </div>
+
+  </div>
+</div>
+{% endblock %}

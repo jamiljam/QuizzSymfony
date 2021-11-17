@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello QuestionsController!{% endblock %}
+
+{% block body %}
+<div class="col-10 offset-1 questionnaire">
+
+  <img src="/../img/logo.png" alt="" class="logo-home mt-4">
+
+  <div pathBg="{{questionnaire.img}}" class="sujet col-12 mt-4">
+    <h1 class="pad">{{questionnaire.name}}</h1>
+  </div>
+
+    <form method="post" action="{{path('questionnaire',{'id':player.id, 'namequestionnaire': questionnaire.name})}}">
+      {% for question in questionnaire.questions.values %}
+        <hr><h3>{{question.name}}</h3>
+
+        <div class="row">
+        {% for reponse in question.reponses.values %}
+          <div class="form-check possibilite m-2">
+            <input class="form-check-input" type="radio" value="{{reponse.name}}" name="{{reponse.question.id}}" id="{{reponse.name}}">
+            <p>&nbsp &nbsp</p> {#espaces forcés entre le boutton et le reponse name#}
+            <label class="form-check-label" for="{{reponse.name}}">{{reponse.name}}</label>
+          </div>
+        {% endfor %}
+        </div>
+
+      {% endfor %}
+      <button type="submit" class="btn btn-green mt-4">Valider</button>
+    </form>
+
+</div>
+{% endblock %}

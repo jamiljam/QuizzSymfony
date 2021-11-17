@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.img) }}
+    <button type ="submit" class="btn btn-blue">{{ button_label|default("Valider") }}</button><br>
+    <br><a href="{{path('player_new')}}" class="btn btn-green">Revenir à la page principale</a>
+{{ form_end(form) }}
+
+{% endblock %}
+
+{# Lorsque l'utilisateur soumet le formulaire, les données soumises pour le champ tags sont utilisées 
+pour construire un ArrayCollection d'objets Tag. La collection est ensuite placée dans le champ des balises 
+du questionnaires et on peut y accéder via $questionnaires->getQuestions().
+
+Jusqu'à présent, cela fonctionne très bien, mais uniquement pour modifier les balises existantes. 
+Il ne nous permet pas encore d'ajouter de nouvelles étiquettes ou de supprimer des étiquettes existantes. #}

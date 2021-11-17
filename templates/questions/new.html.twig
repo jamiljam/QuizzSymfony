@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ form_start(form) }}
+<h2>Question</h2>
+    {{ form_row(form.name) }}
+            <h2>Reponses</h2>
+            <ul class="reponses" data-prototype="{{ form_widget(form.reponses.vars.prototype)|e('html_attr') }}"></ul>
+            <button type="button" class="add_item_link" data-collection-holder-class="reponses">Ajouter une réponse</button>
+
+    <button type ="submit" class="btn btn-blue">{{ button_label|default("Valider") }}</button><br>
+    {{ form_end(form) }}
+<a href="{{path('newQuestionnaires')}}" class="btn btn-green">Revenir à la création d'un questionnaire</a><br>
+<a href="{{path('player_new')}}" class="btn btn-green">Revenir à la page principale</a>
+
+{% endblock %}
